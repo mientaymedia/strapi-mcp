@@ -1,16 +1,34 @@
-## Hi there 👋
+# Mien Tay Media
 
-<!--
-**mientaymedia/mientaymedia** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+This repository contains the Strapi CMS project for Mien Tay Media with Strapi MCP enabled in the server configuration.
 
-Here are some ideas to get you started:
+## Getting started
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run develop
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Start the production server:
+
+```bash
+npm run start
+```
+
+## Notes
+
+- MCP is enabled in [config/server.js](config/server.js).
+- For production deployments, ensure the correct environment variables are configured.
