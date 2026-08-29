@@ -140,4 +140,8 @@ build
 # Claude Code (local tooling)
 ############################
 
-.claude/
+# Share the project-level config and hooks; keep everything else local.
+.claude/*
+!.claude/settings.json
+!.claude/hooks/
+.claude/settings.local.json
