@@ -20,8 +20,12 @@ npm run develop    # dev server with autoReload + admin panel rebuild (http://lo
 npm run build      # build the admin panel
 npm run start      # production server (no autoReload)
 npm run console    # Strapi REPL against the local database
+npm run deploy     # deploy to Strapi Cloud
+npm run upgrade:dry   # preview a Strapi version upgrade (drop :dry to apply)
 npm run strapi -- <cmd>   # any Strapi CLI command, e.g. `npm run strapi -- ts:generate-types`
 ```
+
+(`npm run dev` is an alias of `develop`.)
 
 There is **no test suite, linter, or formatter configured** in this project.
 Do not invent `npm test` / `npm run lint` — they do not exist. To verify a
@@ -31,17 +35,23 @@ Node must be `>=20 <=26` (see `engines` in package.json).
 
 ## Environment
 
-`npm run develop` will not boot without a `.env`. Create one from the
-template and fill in real values:
+**A `.env` is probably already there.** The SessionStart hook in
+[.claude/hooks/session-start.sh](.claude/hooks/session-start.sh) installs
+dependencies and writes a `.env` of throwaway development secrets when one is
+missing. Check before creating your own — overwriting a working `.env` with the
+`tobemodified` placeholders breaks the boot, and changing `ENCRYPTION_KEY`
+after the fact makes already-encrypted admin values undecryptable.
+
+Only if it is genuinely absent:
 
 ```bash
 cp .env.example .env
 ```
 
-`APP_KEYS`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET`, `TRANSFER_TOKEN_SALT`,
-`JWT_SECRET`, and `ENCRYPTION_KEY` are all required. For local work any
-random strings will do; generate them rather than committing the
-`tobemodified` placeholders.
+Then replace every `tobemodified` with a random string. `APP_KEYS` and
+`API_TOKEN_SALT` are hard requirements — Strapi throws at boot without them.
+Missing `TRANSFER_TOKEN_SALT` or `ENCRYPTION_KEY` only warns, disabling data
+transfer and secret encryption respectively, so set them anyway.
 
 `.env`, `.mcp.json`, and `.tmp/` are gitignored because they hold secrets or
 local state. Never commit them, and never paste their contents into a commit
@@ -70,13 +80,14 @@ message, PR body, or code comment.
 - `jsconfig.json` sets `checkJs: true`, so JSDoc annotations are type
   checked. Keep the existing `/** @import { Core } from '@strapi/strapi' */`
   style when adding typed config.
-- Two spaces, semicolons, single quotes — match the surrounding file.
+- Nothing enforces formatting, so match the surrounding file: two spaces,
+  semicolons, single quotes.
 
 ## Notes on specific config
 
 - **MCP** is enabled under `mcp` in `config/server.js`. Strapi mounts the
-  server at `/mcp` (look for `[MCP] Server available at /mcp` in the boot
-  log). `connectTimeoutMs` (default 5000) and `requestTimeoutMs`
+  server at `/mcp` (the boot log prints `[MCP] Server available at /mcp`;
+  the path is hardcoded). `connectTimeoutMs` (default 5000) and `requestTimeoutMs`
   (default 60000) are the available knobs.
   A local `.mcp.json` wiring a client to it is gitignored — it carries an API
   token.

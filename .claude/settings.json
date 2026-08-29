@@ -16,28 +16,22 @@
   "permissions": {
     "allow": [
       "Bash(npm ci:*)",
-      "Bash(npm install:*)",
       "Bash(npm ls:*)",
       "Bash(npm run build:*)",
       "Bash(npm run strapi:*)",
-      "Bash(node --version)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git show:*)",
       "Bash(git branch:*)",
-      "Bash(ls:*)",
-      "Bash(cat:*)",
-      "Bash(head:*)",
-      "Bash(tail:*)",
-      "Bash(find:*)",
-      "Bash(grep:*)",
-      "Bash(rg:*)"
+      "Bash(ls:*)"
     ],
     "deny": [
       "Read(./.env)",
-      "Read(./.env.*)",
-      "Read(./.mcp.json)"
+      "Read(./.env.local)",
+      "Read(./.env.*.local)",
+      "Read(./.mcp.json)",
+      "Read(./.tmp/**)"
     ]
   }
 }
