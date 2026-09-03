@@ -244,5 +244,38 @@ Chỉ tới đây mới có agent gọi agent. Trước đó, multi-agent chỉ 
 
 ---
 
-*Bản vẽ v0.1 — chưa duyệt, chưa có code. Những chỗ ghi "ước tính" hay "cần kiểm chứng"
-là chỗ chưa có dữ liệu, không phải chỗ đã chắc chắn.*
+## 09 — Bổ sung sau khi kiểm chứng trực tiếp (2026-09-03)
+
+Bốn trong sáu câu ở mục 08 đã tự trả lời được bằng cách gọi thẳng MCP server, không cần chờ.
+Ghi lại đây thay vì sửa các mục trên, để còn thấy được cái gì là giả định ban đầu và cái gì
+là dữ liệu thật.
+
+**Câu 1 — Pancake POS dùng được, TikTok Shop thì không.**
+`pos_statistics.list_analytics_sale` cho `revenue`, `capital`, `profit`, `ads_amount`,
+`fee_marketplace`, tách theo `Time.day` / `Order.source` / `Ads.ad_campaign_id`. Quá đủ cho P0.
+TikTok Shop qua apideck báo lỗi thiếu `APIDECK_APP_ID` — chưa dùng được, và cũng chưa cần.
+
+**Câu 2 — Pancake là số chuẩn, vì nó đã gộp sàn rồi.**
+Trong danh sách trường có `fee_marketplace`, `platform_commission`, `sfp_service_fee`,
+`marketplace_tax`. Nghĩa là đơn từ sàn đã đổ về POS kèm phí. Không có hai nguồn để lệch nhau
+ở P0, nên bước đối chiếu chưa cần dựng. Câu này sẽ sống lại ở P2 khi agent ghi ngược lên sàn.
+
+**Câu 6 — mientaymedia là agency, không phải một shop.**
+`pos_shop.list` trả về 8 shop: Tổng kho MLM, Hậu Tâm Store, Xưởng Jeans Hậu Tâm, Tiara,
+Tân Thuận Phát, THE FRIEND, VINSONFORM, và MienTay Media. Đây là khách hàng, không phải
+chi nhánh. **Kiến trúc ở mục 03 vẽ cho một shop là sai** — mọi thứ phải mang `shop_id`
+từ tầng công cụ trở lên, và ma trận quyền ở mục 06 phải phân theo từng khách hàng chứ không
+phải một bảng chung. `agent/config.js` đã dựng theo hướng này.
+
+**Câu 3, 4, 5 vẫn chờ người trả lời.** Cả ba đều là lựa chọn vận hành, không tra ra được:
+ai duyệt lệnh ghi quảng cáo và trong giờ nào, báo cáo đẩy đi đâu, và ngôn ngữ báo cáo
+(P0 đang mặc định tiếng Việt).
+
+**Một điều chỉnh nữa:** P0 dựng thành workflow chứ không phải agent. Lý do và sơ đồ nằm ở
+`agent/README.md`; tóm tắt là bài toán này đã biết trước cần lấy gì, còn cho model tự chọn
+dữ liệu thì chỉ thêm đường sai chứ không thêm giá trị.
+
+---
+
+*Bản vẽ v0.2 — mục 00–08 là thiết kế ban đầu chưa duyệt; mục 09 là dữ liệu đã kiểm chứng.
+Những chỗ ghi "ước tính" hay "cần kiểm chứng" ở các mục trên vẫn là chỗ chưa có dữ liệu.*

@@ -1,0 +1,958 @@
+{
+  "430426051": [
+    {
+      "key": "2026-08-07",
+      "data": {
+        "revenue": 45641000,
+        "capital": 27434000,
+        "profit": 16610000,
+        "ads_amount": 5257000,
+        "fee_marketplace": 1597000,
+        "shipping_fee": 548000,
+        "success": {
+          "order_count": 102
+        },
+        "returned": {
+          "order_count": 3
+        }
+      }
+    },
+    {
+      "key": "2026-08-08",
+      "data": {
+        "revenue": 43882000,
+        "capital": 25564000,
+        "profit": 16782000,
+        "ads_amount": 4413000,
+        "fee_marketplace": 1536000,
+        "shipping_fee": 527000,
+        "success": {
+          "order_count": 98
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-09",
+      "data": {
+        "revenue": 45335000,
+        "capital": 27275000,
+        "profit": 16473000,
+        "ads_amount": 4528000,
+        "fee_marketplace": 1587000,
+        "shipping_fee": 544000,
+        "success": {
+          "order_count": 103
+        },
+        "returned": {
+          "order_count": 3
+        }
+      }
+    },
+    {
+      "key": "2026-08-10",
+      "data": {
+        "revenue": 46389000,
+        "capital": 28042000,
+        "profit": 16723000,
+        "ads_amount": 4822000,
+        "fee_marketplace": 1624000,
+        "shipping_fee": 557000,
+        "success": {
+          "order_count": 98
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-11",
+      "data": {
+        "revenue": 52603000,
+        "capital": 31323000,
+        "profit": 19439000,
+        "ads_amount": 5035000,
+        "fee_marketplace": 1841000,
+        "shipping_fee": 631000,
+        "success": {
+          "order_count": 121
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-12",
+      "data": {
+        "revenue": 41839000,
+        "capital": 24470000,
+        "profit": 15905000,
+        "ads_amount": 4118000,
+        "fee_marketplace": 1464000,
+        "shipping_fee": 502000,
+        "success": {
+          "order_count": 97
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-13",
+      "data": {
+        "revenue": 49801000,
+        "capital": 29246000,
+        "profit": 18812000,
+        "ads_amount": 5200000,
+        "fee_marketplace": 1743000,
+        "shipping_fee": 598000,
+        "success": {
+          "order_count": 109
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-14",
+      "data": {
+        "revenue": 42949000,
+        "capital": 26128000,
+        "profit": 15318000,
+        "ads_amount": 4385000,
+        "fee_marketplace": 1503000,
+        "shipping_fee": 515000,
+        "success": {
+          "order_count": 101
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-15",
+      "data": {
+        "revenue": 56641000,
+        "capital": 34440000,
+        "profit": 20219000,
+        "ads_amount": 6204000,
+        "fee_marketplace": 1982000,
+        "shipping_fee": 680000,
+        "success": {
+          "order_count": 129
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-16",
+      "data": {
+        "revenue": 48781000,
+        "capital": 29732000,
+        "profit": 17342000,
+        "ads_amount": 5394000,
+        "fee_marketplace": 1707000,
+        "shipping_fee": 585000,
+        "success": {
+          "order_count": 103
+        },
+        "returned": {
+          "order_count": 3
+        }
+      }
+    },
+    {
+      "key": "2026-08-17",
+      "data": {
+        "revenue": 50218000,
+        "capital": 30417000,
+        "profit": 18043000,
+        "ads_amount": 5354000,
+        "fee_marketplace": 1758000,
+        "shipping_fee": 603000,
+        "success": {
+          "order_count": 114
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-18",
+      "data": {
+        "revenue": 50943000,
+        "capital": 29765000,
+        "profit": 19395000,
+        "ads_amount": 4723000,
+        "fee_marketplace": 1783000,
+        "shipping_fee": 611000,
+        "success": {
+          "order_count": 110
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-19",
+      "data": {
+        "revenue": 48518000,
+        "capital": 29865000,
+        "profit": 16955000,
+        "ads_amount": 4412000,
+        "fee_marketplace": 1698000,
+        "shipping_fee": 582000,
+        "success": {
+          "order_count": 103
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-20",
+      "data": {
+        "revenue": 48804000,
+        "capital": 29253000,
+        "profit": 17843000,
+        "ads_amount": 4965000,
+        "fee_marketplace": 1708000,
+        "shipping_fee": 586000,
+        "success": {
+          "order_count": 106
+        },
+        "returned": {
+          "order_count": 3
+        }
+      }
+    },
+    {
+      "key": "2026-08-21",
+      "data": {
+        "revenue": 43836000,
+        "capital": 26348000,
+        "profit": 15954000,
+        "ads_amount": 4054000,
+        "fee_marketplace": 1534000,
+        "shipping_fee": 526000,
+        "success": {
+          "order_count": 95
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-22",
+      "data": {
+        "revenue": 43668000,
+        "capital": 26321000,
+        "profit": 15819000,
+        "ads_amount": 4835000,
+        "fee_marketplace": 1528000,
+        "shipping_fee": 524000,
+        "success": {
+          "order_count": 94
+        },
+        "returned": {
+          "order_count": 3
+        }
+      }
+    },
+    {
+      "key": "2026-08-23",
+      "data": {
+        "revenue": 50680000,
+        "capital": 29946000,
+        "profit": 18960000,
+        "ads_amount": 5795000,
+        "fee_marketplace": 1774000,
+        "shipping_fee": 608000,
+        "success": {
+          "order_count": 114
+        },
+        "returned": {
+          "order_count": 6
+        }
+      }
+    },
+    {
+      "key": "2026-08-24",
+      "data": {
+        "revenue": 51771000,
+        "capital": 30247000,
+        "profit": 19712000,
+        "ads_amount": 5238000,
+        "fee_marketplace": 1812000,
+        "shipping_fee": 621000,
+        "success": {
+          "order_count": 109
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-25",
+      "data": {
+        "revenue": 45069000,
+        "capital": 27420000,
+        "profit": 16072000,
+        "ads_amount": 4902000,
+        "fee_marketplace": 1577000,
+        "shipping_fee": 541000,
+        "success": {
+          "order_count": 96
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-26",
+      "data": {
+        "revenue": 51630000,
+        "capital": 30971000,
+        "profit": 18852000,
+        "ads_amount": 5029000,
+        "fee_marketplace": 1807000,
+        "shipping_fee": 620000,
+        "success": {
+          "order_count": 121
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-27",
+      "data": {
+        "revenue": 45493000,
+        "capital": 28163000,
+        "profit": 15738000,
+        "ads_amount": 5121000,
+        "fee_marketplace": 1592000,
+        "shipping_fee": 546000,
+        "success": {
+          "order_count": 96
+        },
+        "returned": {
+          "order_count": 3
+        }
+      }
+    },
+    {
+      "key": "2026-08-28",
+      "data": {
+        "revenue": 58993000,
+        "capital": 35572000,
+        "profit": 21356000,
+        "ads_amount": 5915000,
+        "fee_marketplace": 2065000,
+        "shipping_fee": 708000,
+        "success": {
+          "order_count": 127
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-08-29",
+      "data": {
+        "revenue": 56335000,
+        "capital": 33632000,
+        "profit": 20731000,
+        "ads_amount": 17464000,
+        "fee_marketplace": 1972000,
+        "shipping_fee": 676000,
+        "success": {
+          "order_count": 121
+        },
+        "returned": {
+          "order_count": 17
+        }
+      }
+    },
+    {
+      "key": "2026-08-30",
+      "data": {
+        "revenue": 49119000,
+        "capital": 29592000,
+        "profit": 17808000,
+        "ads_amount": 5346000,
+        "fee_marketplace": 1719000,
+        "shipping_fee": 589000,
+        "success": {
+          "order_count": 115
+        },
+        "returned": {
+          "order_count": 4
+        }
+      }
+    },
+    {
+      "key": "2026-08-31",
+      "data": {
+        "revenue": 47963000,
+        "capital": 28726000,
+        "profit": 17558000,
+        "ads_amount": 5490000,
+        "fee_marketplace": 1679000,
+        "shipping_fee": 576000,
+        "success": {
+          "order_count": 108
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-09-01",
+      "data": {
+        "revenue": 56426000,
+        "capital": 33805000,
+        "profit": 20646000,
+        "ads_amount": 5925000,
+        "fee_marketplace": 1975000,
+        "shipping_fee": 677000,
+        "success": {
+          "order_count": 132
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-09-02",
+      "data": {
+        "revenue": 56625000,
+        "capital": 33867000,
+        "profit": 20776000,
+        "ads_amount": 6181000,
+        "fee_marketplace": 1982000,
+        "shipping_fee": 680000,
+        "success": {
+          "order_count": 130
+        },
+        "returned": {
+          "order_count": 5
+        }
+      }
+    },
+    {
+      "key": "2026-09-03",
+      "data": {
+        "revenue": 57445000,
+        "capital": 33373000,
+        "profit": 22061000,
+        "ads_amount": 5489000,
+        "fee_marketplace": 2011000,
+        "shipping_fee": 689000,
+        "success": {
+          "order_count": 130
+        },
+        "returned": {
+          "order_count": 6
+        }
+      }
+    }
+  ],
+  "1942266492": [
+    {
+      "key": "2026-08-07",
+      "data": {
+        "revenue": 9150000,
+        "capital": 5532000,
+        "profit": 3298000,
+        "ads_amount": 1048000,
+        "fee_marketplace": 320000,
+        "shipping_fee": 110000,
+        "success": {
+          "order_count": 19
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-08",
+      "data": {
+        "revenue": 7775000,
+        "capital": 4726000,
+        "profit": 2777000,
+        "ads_amount": 714000,
+        "fee_marketplace": 272000,
+        "shipping_fee": 93000,
+        "success": {
+          "order_count": 18
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-09",
+      "data": {
+        "revenue": 9269000,
+        "capital": 5679000,
+        "profit": 3266000,
+        "ads_amount": 957000,
+        "fee_marketplace": 324000,
+        "shipping_fee": 111000,
+        "success": {
+          "order_count": 22
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-10",
+      "data": {
+        "revenue": 8176000,
+        "capital": 4876000,
+        "profit": 3014000,
+        "ads_amount": 824000,
+        "fee_marketplace": 286000,
+        "shipping_fee": 98000,
+        "success": {
+          "order_count": 19
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-11",
+      "data": {
+        "revenue": 10180000,
+        "capital": 6129000,
+        "profit": 3695000,
+        "ads_amount": 974000,
+        "fee_marketplace": 356000,
+        "shipping_fee": 122000,
+        "success": {
+          "order_count": 23
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-12",
+      "data": {
+        "revenue": 10504000,
+        "capital": 6341000,
+        "profit": 3795000,
+        "ads_amount": 1245000,
+        "fee_marketplace": 368000,
+        "shipping_fee": 126000,
+        "success": {
+          "order_count": 22
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-13",
+      "data": {
+        "revenue": 7953000,
+        "capital": 4799000,
+        "profit": 2876000,
+        "ads_amount": 718000,
+        "fee_marketplace": 278000,
+        "shipping_fee": 95000,
+        "success": {
+          "order_count": 17
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-14",
+      "data": {
+        "revenue": 10362000,
+        "capital": 6332000,
+        "profit": 3667000,
+        "ads_amount": 1148000,
+        "fee_marketplace": 363000,
+        "shipping_fee": 124000,
+        "success": {
+          "order_count": 22
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-15",
+      "data": {
+        "revenue": 10099000,
+        "capital": 6238000,
+        "profit": 3508000,
+        "ads_amount": 998000,
+        "fee_marketplace": 353000,
+        "shipping_fee": 121000,
+        "success": {
+          "order_count": 24
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-16",
+      "data": {
+        "revenue": 8943000,
+        "capital": 5471000,
+        "profit": 3159000,
+        "ads_amount": 811000,
+        "fee_marketplace": 313000,
+        "shipping_fee": 107000,
+        "success": {
+          "order_count": 19
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-17",
+      "data": {
+        "revenue": 8879000,
+        "capital": 5249000,
+        "profit": 3319000,
+        "ads_amount": 841000,
+        "fee_marketplace": 311000,
+        "shipping_fee": 107000,
+        "success": {
+          "order_count": 20
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-18",
+      "data": {
+        "revenue": 9304000,
+        "capital": 5716000,
+        "profit": 3262000,
+        "ads_amount": 1087000,
+        "fee_marketplace": 326000,
+        "shipping_fee": 112000,
+        "success": {
+          "order_count": 21
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-19",
+      "data": {
+        "revenue": 9563000,
+        "capital": 5724000,
+        "profit": 3504000,
+        "ads_amount": 940000,
+        "fee_marketplace": 335000,
+        "shipping_fee": 115000,
+        "success": {
+          "order_count": 21
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-20",
+      "data": {
+        "revenue": 10208000,
+        "capital": 6233000,
+        "profit": 3618000,
+        "ads_amount": 1063000,
+        "fee_marketplace": 357000,
+        "shipping_fee": 122000,
+        "success": {
+          "order_count": 22
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-21",
+      "data": {
+        "revenue": 10411000,
+        "capital": 6151000,
+        "profit": 3896000,
+        "ads_amount": 1064000,
+        "fee_marketplace": 364000,
+        "shipping_fee": 125000,
+        "success": {
+          "order_count": 23
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-22",
+      "data": {
+        "revenue": 10291000,
+        "capital": 5990000,
+        "profit": 3941000,
+        "ads_amount": 1004000,
+        "fee_marketplace": 360000,
+        "shipping_fee": 123000,
+        "success": {
+          "order_count": 23
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-23",
+      "data": {
+        "revenue": 9666000,
+        "capital": 5840000,
+        "profit": 3488000,
+        "ads_amount": 1149000,
+        "fee_marketplace": 338000,
+        "shipping_fee": 116000,
+        "success": {
+          "order_count": 21
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-24",
+      "data": {
+        "revenue": 10100000,
+        "capital": 6088000,
+        "profit": 3658000,
+        "ads_amount": 3131000,
+        "fee_marketplace": 354000,
+        "shipping_fee": 121000,
+        "success": {
+          "order_count": 24
+        },
+        "returned": {
+          "order_count": 3
+        }
+      }
+    },
+    {
+      "key": "2026-08-25",
+      "data": {
+        "revenue": 9400000,
+        "capital": 5687000,
+        "profit": 3384000,
+        "ads_amount": 972000,
+        "fee_marketplace": 329000,
+        "shipping_fee": 113000,
+        "success": {
+          "order_count": 21
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-26",
+      "data": {
+        "revenue": 9489000,
+        "capital": 5558000,
+        "profit": 3599000,
+        "ads_amount": 1072000,
+        "fee_marketplace": 332000,
+        "shipping_fee": 114000,
+        "success": {
+          "order_count": 22
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-27",
+      "data": {
+        "revenue": 9035000,
+        "capital": 5591000,
+        "profit": 3128000,
+        "ads_amount": 861000,
+        "fee_marketplace": 316000,
+        "shipping_fee": 108000,
+        "success": {
+          "order_count": 20
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-28",
+      "data": {
+        "revenue": 9209000,
+        "capital": 5475000,
+        "profit": 3412000,
+        "ads_amount": 994000,
+        "fee_marketplace": 322000,
+        "shipping_fee": 111000,
+        "success": {
+          "order_count": 21
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-29",
+      "data": {
+        "revenue": 10754000,
+        "capital": 6640000,
+        "profit": 3738000,
+        "ads_amount": 1119000,
+        "fee_marketplace": 376000,
+        "shipping_fee": 129000,
+        "success": {
+          "order_count": 25
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-30",
+      "data": {
+        "revenue": 9766000,
+        "capital": 5786000,
+        "profit": 3638000,
+        "ads_amount": 964000,
+        "fee_marketplace": 342000,
+        "shipping_fee": 117000,
+        "success": {
+          "order_count": 22
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-08-31",
+      "data": {
+        "revenue": 10207000,
+        "capital": 6021000,
+        "profit": 3829000,
+        "ads_amount": 1070000,
+        "fee_marketplace": 357000,
+        "shipping_fee": 122000,
+        "success": {
+          "order_count": 22
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-09-01",
+      "data": {
+        "revenue": 9577000,
+        "capital": 5727000,
+        "profit": 3515000,
+        "ads_amount": 927000,
+        "fee_marketplace": 335000,
+        "shipping_fee": 115000,
+        "success": {
+          "order_count": 21
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-09-02",
+      "data": {
+        "revenue": 8960000,
+        "capital": 5458000,
+        "profit": 3188000,
+        "ads_amount": 1038000,
+        "fee_marketplace": 314000,
+        "shipping_fee": 108000,
+        "success": {
+          "order_count": 20
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    },
+    {
+      "key": "2026-09-03",
+      "data": {
+        "revenue": 8512000,
+        "capital": 5221000,
+        "profit": 2993000,
+        "ads_amount": 805000,
+        "fee_marketplace": 298000,
+        "shipping_fee": 102000,
+        "success": {
+          "order_count": 18
+        },
+        "returned": {
+          "order_count": 1
+        }
+      }
+    }
+  ]
+}
