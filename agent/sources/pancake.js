@@ -97,12 +97,17 @@ function fixtureSource(fixturePath) {
   const payload = require(fixturePath);
   return {
     name: 'fixture',
-    async fetchPeriod({ shopId, since, until }) {
+    /**
+     * Lọc theo NHÃN NGÀY VIỆT NAM (sinceDate/untilDate), không cắt chuỗi mốc UTC:
+     * mốc UTC của một ngày VN bắt đầu từ 17:00 ngày hôm trước, nên cắt chuỗi là lấy nhầm.
+     */
+    async fetchPeriod({ shopId, sinceDate, untilDate }) {
       const all = payload[String(shopId)];
       if (!all) return { rows: [], apiSummary: null };
-      const from = since.slice(0, 10);
-      const to = until.slice(0, 10);
-      const buckets = all.data.filter((b) => b[DAY_KEY] >= from && b[DAY_KEY] <= to);
+      if (!sinceDate || !untilDate) {
+        throw new Error('fixtureSource cần sinceDate/untilDate (nhãn ngày VN), không phải mốc UTC');
+      }
+      const buckets = all.data.filter((b) => b[DAY_KEY] >= sinceDate && b[DAY_KEY] <= untilDate);
       // Fixture tự cộng lại summary cho đúng lát cắt đang lấy.
       const rows = buckets.map(normalizeRow);
       const apiSummary = rows.reduce(

@@ -20,20 +20,53 @@ function parseArgs(argv) {
   return args;
 }
 
-/** Kỳ này và kỳ liền trước cùng độ dài, để so sánh không lệch số ngày. */
-function periods(until, days) {
-  const end = new Date(`${until}T23:59:59Z`);
-  const msDay = 86400000;
-  const startCurrent = new Date(end.getTime() - (days - 1) * msDay);
-  const endPrevious = new Date(startCurrent.getTime() - msDay);
-  const startPrevious = new Date(endPrevious.getTime() - (days - 1) * msDay);
-  const iso = (d) => d.toISOString();
+/**
+ * Múi giờ chia ngày của Pancake. Xác định bằng ba phép thử trên dữ liệu thật
+ * (2026-09-03) — chi tiết trong agent/README.md:
+ *
+ *   gửi 28T00:00Z → 30T23:59Z  ⇒  nhận bucket 28, 29, 30, 31
+ *   gửi 28T17:00Z → 29T16:59Z  ⇒  nhận đúng một bucket 29
+ *   gửi 29T00:00Z → 29T23:59Z  ⇒  cũng chỉ một bucket 29
+ *
+ * Kết luận khớp cả ba: mốc thời gian được tôn trọng đúng như gửi, nhưng ngày
+ * được gán nhãn theo giờ VN. Dựng mốc theo ngày UTC là lệch 7 tiếng, và kỳ báo
+ * cáo sẽ dính một ngày cụt ở biên.
+ *
+ * Việt Nam không có giờ mùa hè nên độ lệch là hằng số; đừng thay bằng
+ * getTimezoneOffset() của máy chạy.
+ */
+const TZ_OFFSET_HOURS = 7;
+
+const MS_DAY = 86400000;
+const MS_HOUR = 3600000;
+
+/**
+ * Kỳ này và kỳ liền trước, cùng độ dài, cắt theo NGÀY LỊCH VIỆT NAM.
+ * Trả về cả mốc UTC để gửi đi lẫn nhãn ngày VN để lọc và để in ra báo cáo.
+ */
+function periods(until, days, offsetHours = TZ_OFFSET_HOURS) {
+  const endDay = Date.parse(`${until}T00:00:00Z`); // 00:00 giờ VN của ngày `until`
+  if (Number.isNaN(endDay)) throw new Error(`Ngày không hợp lệ: ${until}`);
+  if (!Number.isInteger(days) || days < 1) throw new Error(`--days phải là số nguyên dương, nhận: ${days}`);
+
+  const startCurrentDay = endDay - (days - 1) * MS_DAY;
+  const endPreviousDay = startCurrentDay - MS_DAY;
+  const startPreviousDay = endPreviousDay - (days - 1) * MS_DAY;
+
+  const label = (dayMs) => new Date(dayMs).toISOString().slice(0, 10);
+  const utcStart = (dayMs) => new Date(dayMs - offsetHours * MS_HOUR).toISOString();
+  const utcEnd = (dayMs) => new Date(dayMs + MS_DAY - 1000 - offsetHours * MS_HOUR).toISOString();
+
+  const window = (fromDay, toDay) => ({
+    since: utcStart(fromDay),
+    until: utcEnd(toDay),
+    sinceDate: label(fromDay),
+    untilDate: label(toDay),
+  });
+
   return {
-    current: { since: iso(startCurrent).slice(0, 10) + 'T00:00:00Z', until: iso(end) },
-    previous: {
-      since: iso(startPrevious).slice(0, 10) + 'T00:00:00Z',
-      until: iso(endPrevious).slice(0, 10) + 'T23:59:59Z',
-    },
+    current: window(startCurrentDay, endDay),
+    previous: window(startPreviousDay, endPreviousDay),
   };
 }
 

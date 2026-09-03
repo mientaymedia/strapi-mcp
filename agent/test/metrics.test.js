@@ -6,7 +6,6 @@ const assert = require('node:assert');
 const {
   totals, derive, buildFigures, extractNumbers, verifyNarrative,
 } = require('../lib/metrics');
-const { periods } = require('../run');
 
 const ROWS = [
   { date: '2026-09-01', revenue: 100000, capital: 60000, profit: 36000, adsAmount: 12000, feeMarketplace: 4000, shippingFee: 1000, orderCount: 10, returnedOrderCount: 1 },
@@ -63,12 +62,7 @@ test('lệch trong 0,5% thì chấp nhận, quá thì không', () => {
   assert.strictEqual(verifyNarrative('280.000 đ', FIGURES).status, 'unverified'); // lệch 6,7%
 });
 
-test('hai kỳ dài bằng nhau và không chồng lấn', () => {
-  const p = periods('2026-09-03', 14);
-  assert.strictEqual(p.current.since.slice(0, 10), '2026-08-21');
-  assert.strictEqual(p.previous.until.slice(0, 10), '2026-08-20');
-  assert.strictEqual(p.previous.since.slice(0, 10), '2026-08-07');
-});
+// Việc cắt kỳ theo ngày lịch Việt Nam được phủ ở periods.test.js.
 
 // Phần ánh xạ bucket của Pancake được phủ ở pancake.test.js, dựa trên hình dạng
 // phản hồi thật — không dựng lại ở đây theo giả định.

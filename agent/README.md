@@ -83,10 +83,31 @@ base URL và tên tham số khoá — thì chưa: phiên dựng chỉ tiếp c�
 qua REST, nên chưa có gì để đối chiếu. Cần tài liệu API hoặc một khoá thật, trước khi đổi
 `--source=rest`.
 
-Còn một điều đáng ngờ chưa làm rõ: xin `until=2026-08-30T23:59:59Z` thì API trả về **bốn**
-bucket, tới cả ngày 08-31. Nhiều khả năng do lệch múi giờ (VN là UTC+7). `run.js` vì thế
-lấy nhãn kỳ từ ngày thật của dữ liệu trả về chứ không từ tham số yêu cầu — báo cáo nói đúng
-nó đã cộng những ngày nào. Nhưng nguyên nhân thì chưa xác nhận được.
+## Múi giờ: đã đo, không còn đoán
+
+Lần đầu thấy API trả **bốn** bucket cho một yêu cầu ba ngày, giả thuyết là lệch múi giờ.
+Ba phép thử trên dữ liệu thật (shop 430426051, 2026-09-03) đã chốt lại:
+
+| Cửa sổ gửi đi (UTC) | Quy ra giờ VN | Bucket nhận về |
+| --- | --- | --- |
+| 28T00:00 → 30T23:59 | 28 07:00 → **31** 06:59 | 28, 29, 30, **31** |
+| 28T**17:00** → 29T**16:59** | **29 00:00 → 29 23:59** | **chỉ 29** |
+| 29T00:00 → 29T23:59 | 29 07:00 → 30 06:59 | chỉ 29 |
+
+Phép thử thứ hai bác bỏ giả thuyết "API bỏ qua phần giờ, chỉ đọc phần ngày" — nếu vậy nó
+đã phải trả cả 28. Phép thử thứ ba bác bỏ "API quy đổi rồi lấy nguyên ngày VN" — nếu vậy
+nó đã phải trả cả 30.
+
+Cách giải thích khớp cả ba: **mốc thời gian được tôn trọng đúng như gửi, ngày được gán nhãn
+theo giờ VN, và bucket không có dữ liệu nào rơi vào khoảng thì bị bỏ.**
+
+Hệ quả: dựng mốc theo ngày UTC là lệch 7 tiếng, kỳ báo cáo dính một ngày cụt ở biên và
+một job chạy buổi sáng sẽ âm thầm cộng thừa hoặc thiếu. `periods()` vì thế cắt theo ngày
+lịch Việt Nam rồi mới quy về UTC để gửi; `TZ_OFFSET_HOURS` là tham số, đổi được nếu Pancake
+đổi cách chia ngày. `periods.test.js` neo thẳng vào cửa sổ của phép thử thứ hai.
+
+Chỗ chưa chắc: cách giải thích trên khớp cả ba quan sát nhưng chưa loại trừ hết mọi khả
+năng khác. Nếu có tài liệu chính thức của Pancake về múi giờ thì nên đối chiếu lại.
 
 TikTok Shop qua apideck hiện **không dùng được**: thiếu cấu hình `APIDECK_APP_ID`. Không sao
 với P0 vì đơn từ sàn đã đổ về Pancake (`fee_marketplace`, `platform_commission` có số).
