@@ -54,23 +54,35 @@ async function runShop(shop, args, source) {
   const until = args.until || new Date().toISOString().slice(0, 10);
   const range = periods(until, args.days);
 
-  const rows = await source.fetchDaily({ shopId: shop.id, ...range.current });
+  const { rows, apiSummary } = await source.fetchPeriod({ shopId: shop.id, ...range.current });
   if (rows.length === 0) {
     throw new Error(`Không có dữ liệu cho shop ${shop.id} trong kỳ ${range.current.since} → ${until}`);
   }
-  const previousRows = await source.fetchDaily({ shopId: shop.id, ...range.previous });
+  const previous = await source.fetchPeriod({ shopId: shop.id, ...range.previous });
+
+  // Nhãn kỳ lấy từ ngày thật của dữ liệu trả về, không lấy từ tham số yêu cầu:
+  // API có thể trả lệch biên do múi giờ, và báo cáo phải nói đúng nó đã cộng những ngày nào.
+  const dates = rows.map((r) => r.date).sort();
 
   const figures = buildFigures({
     rows,
-    previousRows: previousRows.length ? previousRows : null,
+    previousRows: previous.rows.length ? previous.rows : null,
+    apiSummary,
     shop,
-    since: range.current.since,
-    until: range.current.until,
+    since: `${dates[0]}T00:00:00Z`,
+    until: `${dates[dates.length - 1]}T23:59:59Z`,
   });
 
   // --dry dừng ở đây: chứng minh nửa tất định chạy đúng mà không tốn một đồng API nào.
   if (args.dry) {
     return { figures, narrative: null, verification: null };
+  }
+
+  if (figures.reconciliation.status === 'mismatch') {
+    const detail = figures.reconciliation.mismatches
+      .map((m) => `${m.field}: harness ${m.ours} vs API ${m.theirs}`)
+      .join('; ');
+    throw new Error(`Tổng harness lệch tổng API — tầng nguồn đang đọc sai. ${detail}`);
   }
 
   const { narrate } = require('./lib/narrate');

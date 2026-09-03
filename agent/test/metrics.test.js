@@ -7,7 +7,6 @@ const {
   totals, derive, buildFigures, extractNumbers, verifyNarrative,
 } = require('../lib/metrics');
 const { periods } = require('../run');
-const { normalizeRow } = require('../sources/pancake');
 
 const ROWS = [
   { date: '2026-09-01', revenue: 100000, capital: 60000, profit: 36000, adsAmount: 12000, feeMarketplace: 4000, shippingFee: 1000, orderCount: 10, returnedOrderCount: 1 },
@@ -71,13 +70,5 @@ test('hai kỳ dài bằng nhau và không chồng lấn', () => {
   assert.strictEqual(p.previous.since.slice(0, 10), '2026-08-07');
 });
 
-test('normalizeRow đọc đúng bucket success/returned của Pancake', () => {
-  const row = normalizeRow({
-    key: '2026-09-01',
-    data: { revenue: 500, ads_amount: 50, success: { order_count: 7 }, returned: { order_count: 2 } },
-  });
-  assert.strictEqual(row.orderCount, 7);
-  assert.strictEqual(row.returnedOrderCount, 2);
-  assert.strictEqual(row.adsAmount, 50);
-  assert.strictEqual(row.capital, 0); // trường thiếu về 0, không thành NaN
-});
+// Phần ánh xạ bucket của Pancake được phủ ở pancake.test.js, dựa trên hình dạng
+// phản hồi thật — không dựng lại ở đây theo giả định.

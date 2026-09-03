@@ -30,11 +30,21 @@ function render({ figures, narrative, verification, usage, model }) {
       ? '> Đã kiểm chứng — mọi con số trong phần diễn giải đều truy được về số liệu gốc.'
       : `> **CHƯA KIỂM CHỨNG** — ${verification.untraceable.length} con số không truy được về số liệu gốc: ${verification.untraceable.join(', ')}. Đừng dùng bản này để ra quyết định trước khi có người rà lại.`;
 
+  const recon = figures.reconciliation || { status: 'skipped' };
+  const reconLine =
+    recon.status === 'ok'
+      ? 'Tổng harness khớp tổng do API cộng.'
+      : recon.status === 'skipped'
+        ? `Không đối chiếu được với tổng của API (${recon.reason}).`
+        : `**Tổng harness lệch tổng API** ở: ${recon.mismatches.map((m) => m.field).join(', ')}.`;
+
   return `# Báo cáo vận hành — ${shop.name}
 
 ${banner}
 
 Kỳ: ${period.since.slice(0, 10)} → ${period.until.slice(0, 10)} (${period.days} ngày) · shop \`${shop.id}\`
+
+${reconLine}
 
 ## Số liệu
 

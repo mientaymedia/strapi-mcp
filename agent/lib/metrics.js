@@ -17,6 +17,7 @@ const SUM_FIELDS = [
   'shippingFee',
   'orderCount',
   'returnedOrderCount',
+  'netOrderCount',
 ];
 
 /**
@@ -70,10 +71,34 @@ function compare(current, previous) {
 }
 
 /**
+ * Đối chiếu tổng harness tự cộng với tổng do chính API cộng (`summary`).
+ * Hai phép cộng độc lập trên cùng dữ liệu; lệch nhau nghĩa là tầng nguồn đọc sai
+ * bucket, hoặc API trả thiếu ngày. Bắt được đúng loại lỗi im lặng đã xảy ra một lần.
+ */
+function reconcile(sum, apiSummary, tolerance = TOLERANCE) {
+  if (!apiSummary) return { status: 'skipped', reason: 'API không trả summary', mismatches: [] };
+  const mismatches = [];
+  for (const field of Object.keys(apiSummary)) {
+    const ours = sum[field];
+    const theirs = apiSummary[field];
+    if (typeof ours !== 'number' || typeof theirs !== 'number') continue;
+    const diff = Math.abs(ours - theirs);
+    const scale = Math.abs(theirs) || Math.abs(ours);
+    if (scale === 0) continue;
+    if (diff / scale > tolerance) mismatches.push({ field, ours, theirs });
+  }
+  return {
+    status: mismatches.length === 0 ? 'ok' : 'mismatch',
+    reason: null,
+    mismatches,
+  };
+}
+
+/**
  * Dựng bộ số liệu hoàn chỉnh cho một kỳ. Đây là thứ duy nhất được đưa cho model,
  * và cũng là thứ duy nhất model được phép trích dẫn.
  */
-function buildFigures({ rows, previousRows = null, shop, since, until }) {
+function buildFigures({ rows, previousRows = null, apiSummary = null, shop, since, until }) {
   const sum = totals(rows);
   const derived = derive(sum);
   const prevSum = previousRows ? totals(previousRows) : null;
@@ -82,6 +107,7 @@ function buildFigures({ rows, previousRows = null, shop, since, until }) {
   return {
     shop,
     period: { since, until, days: rows.length },
+    reconciliation: reconcile(sum, apiSummary),
     totals: sum,
     derived,
     comparison: compare({ ...sum, ...derived }, prevSum ? { ...prevSum, ...prevDerived } : null),
@@ -176,6 +202,7 @@ module.exports = {
   totals,
   derive,
   compare,
+  reconcile,
   buildFigures,
   citableValues,
   extractNumbers,
