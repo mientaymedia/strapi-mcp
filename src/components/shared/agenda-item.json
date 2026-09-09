@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_agenda_items",
+  "info": {
+    "displayName": "Agenda item",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "time": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

@@ -443,6 +443,227 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
+  collectionName: 'courses';
+  info: {
+    description: 'L\u1EDBp h\u1ECDc online (Zoom, Google Meet), tr\u1EF1c ti\u1EBFp v\u00E0 k\u1EBFt h\u1EE3p.';
+    displayName: 'Course';
+    pluralName: 'courses';
+    singularName: 'course';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      [
+        'business_mindset',
+        'sales_customer',
+        'marketing_branding',
+        'health_weight',
+        'beauty_lifestyle',
+        'product_solution',
+        'ai_application',
+      ]
+    > &
+      Schema.Attribute.Required;
+    courseStatus: Schema.Attribute.Enumeration<
+      ['upcoming', 'open', 'live', 'completed']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'upcoming'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    duration: Schema.Attribute.String & Schema.Attribute.Required;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    format: Schema.Attribute.Enumeration<['online', 'offline', 'hybrid']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'online'>;
+    fullDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    instructor: Schema.Attribute.Relation<'manyToOne', 'api::speaker.speaker'>;
+    level: Schema.Attribute.Enumeration<
+      ['beginner', 'intermediate', 'advanced', 'all']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'all'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::course.course'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    locationName: Schema.Attribute.String;
+    materials: Schema.Attribute.Component<'shared.link-item', true>;
+    maxAttendees: Schema.Attribute.Integer;
+    meetingProvider: Schema.Attribute.Enumeration<['zoom', 'google_meet']>;
+    publishedAt: Schema.Attribute.DateTime;
+    references: Schema.Attribute.Component<'shared.link-item', true>;
+    registeredCount: Schema.Attribute.Integer;
+    registrationRequired: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    schedule: Schema.Attribute.Component<'shared.course-session', true>;
+    shortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    tags: Schema.Attribute.JSON;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    zoomUrl: Schema.Attribute.String & Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
+  info: {
+    description: 'Workshop, Cafe Talk, Cooking, Wellness, Beauty v\u00E0 Networking.';
+    displayName: 'Event';
+    pluralName: 'events';
+    singularName: 'event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    agenda: Schema.Attribute.Component<'shared.agenda-item', true>;
+    capacity: Schema.Attribute.Integer;
+    category: Schema.Attribute.Enumeration<
+      [
+        'workshop',
+        'cafe_talk',
+        'cooking',
+        'health_wellness',
+        'beauty_lifestyle',
+        'business_networking',
+      ]
+    > &
+      Schema.Attribute.Required;
+    coverImage: Schema.Attribute.Media<'images'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    drinkIncluded: Schema.Attribute.Boolean;
+    endDate: Schema.Attribute.Date;
+    endTime: Schema.Attribute.String;
+    eventStatus: Schema.Attribute.Enumeration<
+      ['upcoming', 'registration_open', 'full', 'completed', 'cancelled']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'upcoming'>;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    format: Schema.Attribute.Enumeration<['offline', 'online', 'hybrid']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'offline'>;
+    gallery: Schema.Attribute.Media<'images', true>;
+    groupUrl: Schema.Attribute.String & Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.String & Schema.Attribute.Required;
+    locationName: Schema.Attribute.String;
+    organizer: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'THE FRIENDS'>;
+    price: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    registeredCount: Schema.Attribute.Integer;
+    registrationDeadline: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    speakers: Schema.Attribute.Relation<'manyToMany', 'api::speaker.speaker'>;
+    startTime: Schema.Attribute.String;
+    summary: Schema.Attribute.Text & Schema.Attribute.Required;
+    tags: Schema.Attribute.JSON;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whoShouldAttend: Schema.Attribute.JSON;
+  };
+}
+
+export interface ApiKnowledgeArticleKnowledgeArticle
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'knowledge_articles';
+  info: {
+    description: 'Th\u01B0 vi\u1EC7n ki\u1EBFn th\u1EE9c c\u1EE7a c\u1ED9ng \u0111\u1ED3ng.';
+    displayName: 'Knowledge article';
+    pluralName: 'knowledge-articles';
+    singularName: 'knowledge-article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.String & Schema.Attribute.DefaultTo<'THE FRIENDS'>;
+    category: Schema.Attribute.String & Schema.Attribute.Required;
+    content: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isSourceLinked: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::knowledge-article.knowledge-article'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    sourceName: Schema.Attribute.String;
+    sourceUrl: Schema.Attribute.String;
+    summary: Schema.Attribute.Text & Schema.Attribute.Required;
+    tags: Schema.Attribute.JSON;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
+  collectionName: 'speakers';
+  info: {
+    description: 'Ng\u01B0\u1EDDi d\u1EABn d\u1EAFt workshop, cafe talk v\u00E0 l\u1EDBp h\u1ECDc.';
+    displayName: 'Speaker';
+    pluralName: 'speakers';
+    singularName: 'speaker';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    avatar: Schema.Attribute.Media<'images'>;
+    bio: Schema.Attribute.Text;
+    company: Schema.Attribute.String;
+    courses: Schema.Attribute.Relation<'oneToMany', 'api::course.course'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    events: Schema.Attribute.Relation<'manyToMany', 'api::event.event'>;
+    expertise: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::speaker.speaker'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -954,6 +1175,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::course.course': ApiCourseCourse;
+      'api::event.event': ApiEventEvent;
+      'api::knowledge-article.knowledge-article': ApiKnowledgeArticleKnowledgeArticle;
+      'api::speaker.speaker': ApiSpeakerSpeaker;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

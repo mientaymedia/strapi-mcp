@@ -1,0 +1,144 @@
+{
+  "kind": "collectionType",
+  "collectionName": "courses",
+  "info": {
+    "singularName": "course",
+    "pluralName": "courses",
+    "displayName": "Course",
+    "description": "Lớp học online (Zoom, Google Meet), trực tiếp và kết hợp."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true
+    },
+    "fullDescription": {
+      "type": "text",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "business_mindset",
+        "sales_customer",
+        "marketing_branding",
+        "health_weight",
+        "beauty_lifestyle",
+        "product_solution",
+        "ai_application"
+      ],
+      "required": true
+    },
+    "instructor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::speaker.speaker",
+      "inversedBy": "courses"
+    },
+    "duration": {
+      "type": "string",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced",
+        "all"
+      ],
+      "default": "all",
+      "required": true
+    },
+    "schedule": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.course-session"
+    },
+    "format": {
+      "type": "enumeration",
+      "enum": [
+        "online",
+        "offline",
+        "hybrid"
+      ],
+      "default": "online",
+      "required": true
+    },
+    "meetingProvider": {
+      "type": "enumeration",
+      "enum": [
+        "zoom",
+        "google_meet"
+      ]
+    },
+    "location": {
+      "type": "string"
+    },
+    "locationName": {
+      "type": "string"
+    },
+    "zoomUrl": {
+      "type": "string",
+      "private": true
+    },
+    "registrationRequired": {
+      "type": "boolean",
+      "default": true
+    },
+    "maxAttendees": {
+      "type": "integer"
+    },
+    "registeredCount": {
+      "type": "integer"
+    },
+    "courseStatus": {
+      "type": "enumeration",
+      "enum": [
+        "upcoming",
+        "open",
+        "live",
+        "completed"
+      ],
+      "default": "upcoming",
+      "required": true
+    },
+    "materials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link-item"
+    },
+    "references": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link-item"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

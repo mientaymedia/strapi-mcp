@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_course_sessions",
+  "info": {
+    "displayName": "Course session",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "sessionId": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "startTime": {
+      "type": "string",
+      "required": true
+    },
+    "endTime": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

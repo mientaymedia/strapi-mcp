@@ -1,0 +1,145 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": "Workshop, Cafe Talk, Cooking, Wellness, Beauty và Networking."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "summary": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "workshop",
+        "cafe_talk",
+        "cooking",
+        "health_wellness",
+        "beauty_lifestyle",
+        "business_networking"
+      ],
+      "required": true
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "locationName": {
+      "type": "string"
+    },
+    "format": {
+      "type": "enumeration",
+      "enum": [
+        "offline",
+        "online",
+        "hybrid"
+      ],
+      "default": "offline",
+      "required": true
+    },
+    "speakers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::speaker.speaker",
+      "inversedBy": "events"
+    },
+    "organizer": {
+      "type": "string",
+      "default": "THE FRIENDS"
+    },
+    "capacity": {
+      "type": "integer"
+    },
+    "registeredCount": {
+      "type": "integer"
+    },
+    "eventStatus": {
+      "type": "enumeration",
+      "enum": [
+        "upcoming",
+        "registration_open",
+        "full",
+        "completed",
+        "cancelled"
+      ],
+      "default": "upcoming",
+      "required": true
+    },
+    "registrationDeadline": {
+      "type": "datetime"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "drinkIncluded": {
+      "type": "boolean"
+    },
+    "groupUrl": {
+      "type": "string",
+      "private": true
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "agenda": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.agenda-item"
+    },
+    "whoShouldAttend": {
+      "type": "json"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
