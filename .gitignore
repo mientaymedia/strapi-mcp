@@ -140,4 +140,4 @@ build
 # Claude Code (local tooling)
 ############################
 
-.claude/
+.claude/reports/

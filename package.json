@@ -12,9 +12,13 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "agent:report": "node agent/run.js",
+    "agent:dry": "node agent/run.js --dry",
+    "agent:test": "node --test agent/test/*.test.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.72.0",
     "@strapi/database": "5.51.2",
     "@strapi/plugin-cloud": "5.51.2",
     "@strapi/plugin-users-permissions": "5.51.2",
